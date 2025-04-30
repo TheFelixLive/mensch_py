@@ -1,27 +1,37 @@
-# Example file showing a basic pygame "game loop"
 import pygame
 
-# pygame setup
 pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-running = True
+window = pygame.display.set_mode((640,480))
 
+def key_debug():
+    print(pygame.event.get())
+
+
+x = 120
+y = 120
+running = True
 while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
+
     for event in pygame.event.get():
+        key_debug()
         if event.type == pygame.QUIT:
             running = False
+            break
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+                break
+            elif event.key == pygame.K_RIGHT:
+                x += 8
+            elif event.key == pygame.K_LEFT:
+                x -= 8
+            elif event.key == pygame.K_DOWN:
+                y += 8
+            elif event.key == pygame.K_UP:
+                y -= 8
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
-
-    # RENDER YOUR GAME HERE
-
-    # flip() the display to put your work on screen
-    pygame.display.flip()
-
-    clock.tick(60)  # limits FPS to 60
+    window.fill((0,0,0))
+    pygame.draw.rect(window,(0,0,255),(x,y,400,240))
+    pygame.display.update()
 
 pygame.quit()
