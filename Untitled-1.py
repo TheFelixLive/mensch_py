@@ -4,6 +4,7 @@ import pygame
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
+pygame.display.toggle_fullscreen()
 clock = pygame.time.Clock()
 running = True
 
