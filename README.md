@@ -7,7 +7,7 @@ We are programming a simple  port of mensch ärgere dich nicht on python.
 - [ ] Working window
 - [ ] Simple game board
 - [x] Main characters
-- [ ] Cube
+- [ ] number display
 - [ ] Basic function
 - [ ] Working main characters
 
