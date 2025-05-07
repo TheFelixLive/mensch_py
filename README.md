@@ -6,9 +6,10 @@ We are programming a simple  port of mensch ärgere dich nicht on python.
 ## Features we are currently working on
 - [ ] Working window
 - [ ] Simple game board
-- [ ] Main characters
+- [x] Main characters
 - [ ] Cube
 - [ ] Basic function
+- [ ] Working main characters
 
 ## Planned features
 - [ ] Menu
