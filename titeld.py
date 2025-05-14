@@ -45,6 +45,7 @@ RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(
 fild_normal = pygame.image.load(
     os.path.join('textures', 'withe_feld.png'))
 fild_normal = pygame.transform.scale_by(fild_normal, (0.2,0.2))
+fild_normal_rect = fild_normal.get_rect(midbottom = (WIDTH/2,HEIGHT-10))
 
 background_colour = ("#FFFFB9")
 
@@ -114,7 +115,74 @@ def main():
     yellow_health = 10
 
     WIN.fill(background_colour)
-    WIN.blit(fild_normal, (0,0))
+
+    WIN.blit(fild_normal, fild_normal_rect)
+
+    i = 0
+    last_rect = None
+
+    # Oben links (↖)
+    while True:
+        offset_x = -40  # Feste Verschiebung
+        offset_y = -40  # Feste Verschiebung
+        new_rect = fild_normal_rect.move(offset_x, offset_y)
+
+        print(f"Oben links - i: {i}, offset_x: {offset_x}, offset_y: {offset_y}, new_rect: {new_rect}")
+
+        if new_rect.right <= 50:
+            break
+
+        WIN.blit(fild_normal, new_rect)
+        last_rect = new_rect
+        i += 1
+
+    # Oben rechts (↗)
+    i = 1
+    while True:
+        offset_x = 40  # Feste Verschiebung
+        offset_y = -40  # Feste Verschiebung
+        new_rect = last_rect.move(offset_x, offset_y)
+
+        print(f"Oben rechts - i: {i}, offset_x: {offset_x}, offset_y: {offset_y}, new_rect: {new_rect}")
+
+        if new_rect.bottom <= 60:
+            break
+
+        WIN.blit(fild_normal, new_rect)
+        last_rect = new_rect
+        i += 1
+
+    # Unten rechts (↘)
+    i = 1
+    while True:
+        offset_x = 40  # Feste Verschiebung
+        offset_y = 40  # Feste Verschiebung
+        new_rect = last_rect.move(offset_x, offset_y)
+
+        print(f"Unten rechts - i: {i}, offset_x: {offset_x}, offset_y: {offset_y}, new_rect: {new_rect}")
+
+        if new_rect.left >= WIN.get_width() - 50:
+            break
+
+        WIN.blit(fild_normal, new_rect)
+        last_rect = new_rect
+        i += 1
+
+    # Unten links (↙)
+    i = 1
+    while True:
+        offset_x = -40  # Feste Verschiebung
+        offset_y = 40  # Feste Verschiebung
+        new_rect = last_rect.move(offset_x, offset_y)
+
+        print(f"Unten links - i: {i}, offset_x: {offset_x}, offset_y: {offset_y}, new_rect: {new_rect}")
+
+        if new_rect.top >= WIN.get_height() - 50:
+            break
+
+        WIN.blit(fild_normal, new_rect)
+        i += 1
+
 
     clock = pygame.time.Clock()
     run = True
